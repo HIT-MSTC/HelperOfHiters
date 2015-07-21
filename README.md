@@ -19,3 +19,7 @@
 
 所用技术：
     前端用安卓进行开发，后端暂定使用python+mysql数据库。主要包括注册、登录、分类浏览问题、发布回答问题、设置满意答案等几个功能模块。
+    可能还涉及到html，asp的学习，UI的操作设计在整个项目中战友很大的一部分工作量，所以需要这部分相当多的知识，参考网站http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&mid=207268323&idx=1&sn=182a166ae988db4087cd1835bfb5237c&scene=1&from=groupmessage&isappinstalled=0#rd
+    其余html，asp，mysql参考网站http://www.w3school.com.cn/
+    涉及到网站应该还可能用到javascript，参考上面的网站。
+    主要技术是java和UI，其余基本上是陪衬。
