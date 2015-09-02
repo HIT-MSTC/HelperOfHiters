@@ -3,4 +3,3 @@ G:\作业任务\c#\HelperOfHiters\HelperOfHiters\bin\HelperOfHiters.dll
 G:\作业任务\c#\HelperOfHiters\HelperOfHiters\bin\HelperOfHiters.pdb
 G:\作业任务\c#\HelperOfHiters\HelperOfHiters\obj\Debug\HelperOfHiters.dll
 G:\作业任务\c#\HelperOfHiters\HelperOfHiters\obj\Debug\HelperOfHiters.pdb
-G:\作业任务\c#\HelperOfHiters\HelperOfHiters\obj\Debug\HelperOfHiters.csprojResolveAssemblyReference.cache

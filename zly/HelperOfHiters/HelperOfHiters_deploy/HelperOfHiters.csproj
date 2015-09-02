@@ -72,7 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\HelperOfHiters.pubxml" />
-    <None Include="Properties\PublishProfiles\HelperOfHitersDocument.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

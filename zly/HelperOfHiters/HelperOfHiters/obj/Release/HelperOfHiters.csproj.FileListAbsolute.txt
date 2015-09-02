@@ -1,0 +1,6 @@
+G:\作业任务\c#\HelperOfHiters\HelperOfHiters\bin\HelperOfHiters.dll.config
+G:\作业任务\c#\HelperOfHiters\HelperOfHiters\bin\HelperOfHiters.dll
+G:\作业任务\c#\HelperOfHiters\HelperOfHiters\bin\HelperOfHiters.pdb
+G:\作业任务\c#\HelperOfHiters\HelperOfHiters\obj\Release\HelperOfHiters.csprojResolveAssemblyReference.cache
+G:\作业任务\c#\HelperOfHiters\HelperOfHiters\obj\Release\HelperOfHiters.dll
+G:\作业任务\c#\HelperOfHiters\HelperOfHiters\obj\Release\HelperOfHiters.pdb

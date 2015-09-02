@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="HelperOfHiters" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="AppHostConfig" match="^HelperOfHiters$" />
+    <parameterEntry kind="ProviderPath" scope="contentPath" match="^G:\\作业任务\\c\#\\HelperOfHiters\\HelperOfHiters\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^G:\\作业任务\\c\#\\HelperOfHiters\\HelperOfHiters\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="IIS Web Application Pool Name" description="" value="ASP.NET v4.0" tags="">
+    <parameterEntry kind="DeploymentObjectAttribute" scope="application" match="application[@applicationPool='Clr4IntegratedAppPool']/@applicationPool" />
+  </parameter>
+  <parameter name="IisVirtualDirectoryPhysicalPath" description="" value="G:\作业任务\c#\HelperOfHiters\HelperOfHiters_deploy" tags="PhysicalPath">
+    <parameterEntry kind="DestinationVirtualDirectory" scope=".*" match="^G:\\作业任务\\c\#\\HelperOfHiters\\HelperOfHiters$" />
+  </parameter>
+  <parameter name="connStr-Web.config Connection String" description="" value="Data Source=PC-20140821KFLI;Initial Catalog=HelperOfHiters;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="G:\\作业任务\\c\#\\HelperOfHiters\\HelperOfHiters\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='connStr']/@connectionString" />
+  </parameter>
+</parameters>
