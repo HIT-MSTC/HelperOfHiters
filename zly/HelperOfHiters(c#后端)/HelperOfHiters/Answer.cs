@@ -17,20 +17,13 @@ namespace HelperOfHiters
             sql.Dispose();
             return f;
         }
-        public static int PostAnswer(int TopicId,String Author,String Text)
+        public static bool PostAnswer(int TopicId,String Author,String Text)
         {
-            String commStr1 = "select max(id) as lastId from Answer";
+            String commStr = "insert into Answer(TopicId,Author,Date,Text) values (" + TopicId + ",'" + Author + "',getdate(),'" + Text + "')";
             SQL sql = new SQL();
-            SqlDataReader r = sql.ExecuteReader(commStr1);
-            int id = 0;
-            if (r.Read())
-                id = int.Parse(r[0].ToString()) + 1;
-            r.Close();
-            String date = DateTime.Now.ToShortDateString();
-            String commStr2 = "insert into Answer values (" + id + "," + TopicId + ",'" + Author + "','" + date + "','" + Text + "')";
-            sql.ExecuteNonQuery(commStr2);
+            bool f = sql.ExecuteNonQuery(commStr);
             sql.Dispose();
-            return id;
+            return f;
         }
         public static bool DeleteAnswer(int id)
         {
@@ -40,16 +33,30 @@ namespace HelperOfHiters
             sql.Dispose();
             return f;
         }
-
-        /*public static bool DeleteTopicAnswer(int TopicId)
+        public static bool RecommandAnswer(int id)
         {
-            String commStr = "delete from Answer where TopicId = " + TopicId;
+            String commStr = "update Answer set Recommand = 1 where id = " + id;
             SQL sql = new SQL();
             bool f = sql.ExecuteNonQuery(commStr);
             sql.Dispose();
             return f;
-        }*/
-
+        }
+        public static bool CancelRecommandAnswer(int id)
+        {
+            String commStr = "update Answer set Recommand = 0 where id = " + id;
+            SQL sql = new SQL();
+            bool f = sql.ExecuteNonQuery(commStr);
+            sql.Dispose();
+            return f;
+        }
+        public static String GetRecommandAnswer()
+        {
+            String commStr = "select * from Answer where Recommand = 1";
+            SQL sql = new SQL();
+            String ans = sql.ExecuteXml(commStr);
+            sql.Dispose();
+            return ans;
+        }
         public static String GetMessage(int id, String key)
         {
             String ans = "";

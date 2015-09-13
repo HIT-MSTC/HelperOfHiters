@@ -107,7 +107,7 @@ namespace HelperOfHiters
         }
 
         [WebMethod]
-        public int PostTopic(String Author, String Title, String Part, String Text)
+        public bool PostTopic(String Author, String Title, String Part, String Text)
         {
             return Topic.PostTopic(Author, Title, Part, Text); 
         }
@@ -179,7 +179,7 @@ namespace HelperOfHiters
         }
 
         [WebMethod]
-        public int PostAnswer(int TopicId, String Author, String Text)
+        public bool PostAnswer(int TopicId, String Author, String Text)
         {
             return Answer.PostAnswer(TopicId, Author, Text);
         }
@@ -236,6 +236,30 @@ namespace HelperOfHiters
         public String GetAnswerXml(int id)
         {
             return Answer.GetXml(id);
+        }
+
+        [WebMethod]
+        public String GetRecommandTopic(String Part)
+        {
+            return Topic.GetRecommandTopic(Part);
+        }
+
+        [WebMethod]
+        public bool RecommandAnswer(int id)
+        {
+            return Answer.RecommandAnswer(id);
+        }
+
+        [WebMethod]
+        public bool CancelRecommandAnswer(int id)
+        {
+            return Answer.CancelRecommandAnswer(id);
+        }
+
+        [WebMethod]
+        public String GetRecommandAnswer()
+        {
+            return Answer.GetRecommandAnswer();
         }
     }
 }
