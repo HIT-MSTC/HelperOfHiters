@@ -25,9 +25,25 @@ namespace HelperOfHiters
             sql.Dispose();
             return f;
         }
+        public static String GetAllRecommandTopic()
+        {
+            String commStr = "select * from Topic where Recommand = 1";
+            SQL sql = new SQL();
+            String ans = sql.ExecuteXml(commStr);
+            sql.Dispose();
+            return ans;
+        }
         public static String GetRecommandTopic(String Part)
         {
-            String commStr = "select * from Topic where Recommand = 1 and Part = '" + Part + "'";
+            String commStr = "select * from Topic where Recommand = 1 and Part in ('" + Part.Substring(0,Part.Length-1).Replace(",","','") + "')";
+            SQL sql = new SQL();
+            String ans = sql.ExecuteXml(commStr);
+            sql.Dispose();
+            return ans;
+        }
+        public static String GetPartTopic(String Part)
+        {
+            String commStr = "select * from Topic where Part = '" + Part + "'";
             SQL sql = new SQL();
             String ans = sql.ExecuteXml(commStr);
             sql.Dispose();

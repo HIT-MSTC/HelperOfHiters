@@ -50,7 +50,7 @@ public class ShowTopicAdapter extends BaseAdapter{
 		TopicItem item;
 		if(convertView==null)
 		{
-			convertView = LayoutInflater.from(context).inflate(R.layout.view_topic, null);
+			convertView = LayoutInflater.from(context).inflate(R.layout.listitem_topic, null);
 			item = new TopicItem();
 			item.Title = (TextView)convertView.findViewById(R.id.TopicTitleView);
 			item.Text = (TextView)convertView.findViewById(R.id.TopicTextView);
@@ -68,6 +68,11 @@ public class ShowTopicAdapter extends BaseAdapter{
 		{
 			item.Title.setText(title);
 			item.Title.setTextSize(40f);
+		}
+		else if(data.get(position).get("Recommand").equals("true"))
+		{
+			item.Title.setText("ÂúÒâ´ð°¸");
+			item.Title.setTextSize(25f);
 		}
 		else
 		{

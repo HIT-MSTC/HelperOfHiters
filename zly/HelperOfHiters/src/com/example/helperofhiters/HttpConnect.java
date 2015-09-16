@@ -11,7 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 
 public class HttpConnect extends Thread{
-	private String connStr = "http://192.168.17.169:22222/WebService1.asmx";
+	private String connStr = "http://192.168.17.170:22222/WebService1.asmx";
 	private String method;
 	private String data;
 	private Handler handler;
@@ -24,7 +24,7 @@ public class HttpConnect extends Thread{
 	}
 	public void run()
 	{
-		if(method==null||data==null||handler==null||method.equals("")||data.equals(""))
+		if(method==null||data==null||handler==null||method.equals(""))
 			return;
 		try {
 			response = Message.obtain(handler);

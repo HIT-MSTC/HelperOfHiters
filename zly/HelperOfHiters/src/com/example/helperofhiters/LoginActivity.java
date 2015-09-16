@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -38,8 +36,9 @@ public class LoginActivity extends ActionBarActivity {
 						loginButton.setEnabled(false);
 						registerButton.setEnabled(false);
 						Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-						messageIntent = new Intent();
+						messageIntent = new Intent().setClass(LoginActivity.this, MainPageActivity.class);
 						messageIntent.putExtra("UserName", userName);
+						startActivity(messageIntent);
 						LoginActivity.this.finish();
 					}
 					else
@@ -56,8 +55,9 @@ public class LoginActivity extends ActionBarActivity {
 						loginButton.setEnabled(false);
 						registerButton.setEnabled(false);
 						Toast.makeText(LoginActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-						messageIntent = new Intent();
+						messageIntent = new Intent().setClass(LoginActivity.this, MainPageActivity.class);
 						messageIntent.putExtra("UserName", userName);
+						startActivity(messageIntent);
 						LoginActivity.this.finish();
 					}
 					else
@@ -100,8 +100,10 @@ public class LoginActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String userName = userNameEditText.getText()+"";
+				userName = userNameEditText.getText()+"";
 				String password = passwordEditText.getText()+"";
+				if(userName.isEmpty()||password.isEmpty())
+					return;
 				HttpConnect hc = new HttpConnect("Login","UserName="+userName+"&Password="+password,handler);
 				hc.start();
 			}
@@ -111,32 +113,11 @@ public class LoginActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent().setClass(LoginActivity.this, ShowTopicAnswerActivity.class);
-				intent.putExtra("TopicId", 1);
-				intent.putExtra("UserName", "zhaoluyuan");
+				Intent intent = new Intent().setClass(LoginActivity.this, MainPageActivity.class);
 				startActivity(intent);
 				LoginActivity.this.finish();
 			}
 			
 		});
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 }

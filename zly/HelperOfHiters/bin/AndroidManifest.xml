@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="21"
+        android:targetSdkVersion="22" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	
     <application
@@ -23,7 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowTopicAnswerActivity" />
+        <activity android:name=".MainPageActivity" android:label="@string/app_name" android:launchMode="singleTask" />
+        <activity android:name=".UserMessageActivity" android:label="个人信息" />
+        <activity android:name=".ShowPartListActivity" android:label="分类浏览" />
+        <activity android:name=".ShowTopicListActivity" android:label="问题列表" />
+        <activity android:name=".ShowTopicAnswerActivity" android:label="问题详情" />
+        <activity android:name=".PostTopicActivity" android:label="发布帖子" />
+        
     </application>
 
 </manifest>

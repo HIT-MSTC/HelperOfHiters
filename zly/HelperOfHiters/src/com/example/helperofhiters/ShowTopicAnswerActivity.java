@@ -63,6 +63,8 @@ public class ShowTopicAnswerActivity extends ActionBarActivity{
 				connectTryTimes--;
 				connect();
 			}
+			else
+				Toast.makeText(ShowTopicAnswerActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
 		}
 	};
 	private Handler editHandler = new Handler()
@@ -111,7 +113,7 @@ public class ShowTopicAnswerActivity extends ActionBarActivity{
 				}
 				else if(bd.containsKey("PostAnswer"))
 				{
-					if(XmlDeal.getInt((bd.getString("PostAnswer")))>0)
+					if(XmlDeal.getBoolean((bd.getString("PostAnswer"))))
 					{
 						Toast.makeText(ShowTopicAnswerActivity.this, "回复成功", Toast.LENGTH_SHORT).show();
 						connectTryTimes++;
@@ -120,14 +122,38 @@ public class ShowTopicAnswerActivity extends ActionBarActivity{
 					else
 						Toast.makeText(ShowTopicAnswerActivity.this, "回复失败", Toast.LENGTH_SHORT).show();
 				}
+				else if(bd.containsKey("RecommandAnswer"))
+				{
+					if(XmlDeal.getBoolean((bd.getString("RecommandAnswer"))))
+					{
+						Toast.makeText(ShowTopicAnswerActivity.this, "设置满意答案成功", Toast.LENGTH_SHORT).show();
+						connectTryTimes++;
+						connect();
+					}
+					else
+						Toast.makeText(ShowTopicAnswerActivity.this, "设置满意答案失败", Toast.LENGTH_SHORT).show();
+				}
+				else if(bd.containsKey("CancelRecommandAnswer"))
+				{
+					if(XmlDeal.getBoolean((bd.getString("CancelRecommandAnswer"))))
+					{
+						Toast.makeText(ShowTopicAnswerActivity.this, "取消满意答案成功", Toast.LENGTH_SHORT).show();
+						connectTryTimes++;
+						connect();
+					}
+					else
+						Toast.makeText(ShowTopicAnswerActivity.this, "取消满意答案失败", Toast.LENGTH_SHORT).show();
+				}
 			}
+			else
+				Toast.makeText(ShowTopicAnswerActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
 		}
 	};
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_showtopic);
+		setContentView(R.layout.activity_show_topic_answer);
 		listview = (ListView)findViewById(R.id.listView1);
 		Intent mIntent = getIntent();
 		topicId = mIntent.getExtras().getInt("TopicId");
@@ -135,11 +161,11 @@ public class ShowTopicAnswerActivity extends ActionBarActivity{
 		connect();
 		listview.setOnItemLongClickListener(new OnItemLongClickListener(){
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, final View arg1,
 					final int arg2, long arg3) {
 				// TODO Auto-generated method stub
-				@SuppressWarnings("unchecked")
 				final Map<String,String> data = (Map<String, String>) adapter.getItem(arg2);
 				if(data.get("Author").equals(userName))
 				{
@@ -161,8 +187,7 @@ public class ShowTopicAnswerActivity extends ActionBarActivity{
 	                        	editor.setView(editText);
 	                        	editor.setPositiveButton("确定", new DialogInterface.OnClickListener(){
 									@Override
-									public void onClick(DialogInterface dialog,
-											int which) {
+									public void onClick(DialogInterface dialog, int which) {
 										// TODO Auto-generated method stub
 										String text = editText.getText()+"";
 										HttpConnect hc;
@@ -185,8 +210,7 @@ public class ShowTopicAnswerActivity extends ActionBarActivity{
 	                        	editor.setMessage("是否确认删除该贴");
 	                        	editor.setPositiveButton("确定", new DialogInterface.OnClickListener(){
 									@Override
-									public void onClick(DialogInterface dialog,
-											int which) {
+									public void onClick(DialogInterface dialog, int which) {
 										// TODO Auto-generated method stub
 										HttpConnect hc;
 										if(data.containsKey("Title"))
@@ -206,6 +230,117 @@ public class ShowTopicAnswerActivity extends ActionBarActivity{
 	                    }
 	                });
 	                builder.show();
+				}
+				else if(((Map<String, String>) adapter.getItem(0)).get("Author").equals(userName))
+				{
+					if(data.get("Recommand").equals("false"))
+					{
+						AlertDialog.Builder builder = new AlertDialog.Builder(ShowTopicAnswerActivity.this);
+		                final String[] choice = {"设为满意答案", "删除", "取消"};
+		                builder.setItems(choice, new DialogInterface.OnClickListener()
+		                {
+		                    @Override
+		                    public void onClick(DialogInterface dialog, int which)
+		                    {
+		                        switch(which)
+		                        {
+		                        case 0:
+		                        {
+		                        	AlertDialog.Builder editor = new AlertDialog.Builder(ShowTopicAnswerActivity.this);
+			                        editor.setMessage("是否标记为满意答案");
+			                       	editor.setPositiveButton("确定", new DialogInterface.OnClickListener(){
+										@Override
+										public void onClick(DialogInterface dialog, int which) {
+											// TODO Auto-generated method stub
+											HttpConnect hc = new HttpConnect("RecommandAnswer","id="+data.get("id"),editHandler);
+											hc.start();
+										}
+		                        	});
+		                        	editor.setNegativeButton("取消", null);
+		                        	editor.show();
+		                        	break;
+		                        }
+		                        case 1:
+		                        {
+		                        	AlertDialog.Builder editor = new AlertDialog.Builder(ShowTopicAnswerActivity.this);
+		                        	editor.setMessage("是否确认删除该贴");
+		                        	editor.setPositiveButton("确定", new DialogInterface.OnClickListener(){
+										@Override
+										public void onClick(DialogInterface dialog, int which) {
+											// TODO Auto-generated method stub
+											HttpConnect hc;
+											if(data.containsKey("Title"))
+												hc = new HttpConnect("DeleteTopic","TopicId="+data.get("id"),editHandler);
+											else
+												hc = new HttpConnect("DeleteAnswer","id="+data.get("id"),editHandler);
+											hc.start();
+										}
+		                        	});
+		                        	editor.setNegativeButton("取消", null);
+		                        	editor.show();
+		                        	break;
+		                        }
+		                        case 2:
+		                        	break;
+		                        }
+		                    }
+		                });
+		                builder.show();
+					}
+					else
+					{
+						AlertDialog.Builder builder = new AlertDialog.Builder(ShowTopicAnswerActivity.this);
+		                final String[] choice = {"取消满意答案", "删除", "取消"};
+		                builder.setItems(choice, new DialogInterface.OnClickListener()
+		                {
+		                    @Override
+		                    public void onClick(DialogInterface dialog, int which)
+		                    {
+		                        switch(which)
+		                        {
+		                        case 0:
+		                        {
+		                        	AlertDialog.Builder editor = new AlertDialog.Builder(ShowTopicAnswerActivity.this);
+			                        editor.setMessage("是否取消该满意答案");
+			                       	editor.setPositiveButton("确定", new DialogInterface.OnClickListener(){
+										@Override
+										public void onClick(DialogInterface dialog, int which) {
+											// TODO Auto-generated method stub
+											HttpConnect hc = new HttpConnect("CancelRecommandAnswer","id="+data.get("id"),editHandler);
+											hc.start();
+										}
+		                        	});
+		                        	editor.setNegativeButton("取消", null);
+		                        	editor.show();
+		                        	break;
+		                        }
+		                        case 1:
+		                        {
+		                        	AlertDialog.Builder editor = new AlertDialog.Builder(ShowTopicAnswerActivity.this);
+		                        	editor.setMessage("是否确认删除该贴");
+		                        	editor.setPositiveButton("确定", new DialogInterface.OnClickListener(){
+										@Override
+										public void onClick(DialogInterface dialog, int which) {
+											// TODO Auto-generated method stub
+											HttpConnect hc;
+											if(data.containsKey("Title"))
+												hc = new HttpConnect("DeleteTopic","TopicId="+data.get("id"),editHandler);
+											else
+												hc = new HttpConnect("DeleteAnswer","id="+data.get("id"),editHandler);
+											hc.start();
+										}
+		                        	});
+		                        	editor.setNegativeButton("取消", null);
+		                        	editor.show();
+		                        	break;
+		                        }
+		                        case 2:
+		                        	break;
+		                        }
+		                    }
+		                });
+		                builder.show();
+					}
 				}
 				return false;
 			}

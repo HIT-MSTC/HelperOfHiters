@@ -32,14 +32,6 @@ public class XmlDeal {
 		s = s.substring(s.indexOf(">")+1);
 		return StringEscapeUtils.unescapeHtml4(s.trim());
 	}
-	public static int getInt(String s)
-	{
-		int b = s.indexOf("<int");
-		int e = s.lastIndexOf("</int>");
-		s = s.substring(b, e);
-		s = s.substring(s.indexOf(">")+1);
-		return Integer.parseInt(s.trim());
-	}
 	public static Document getXml(String s)
 	{
 		try {

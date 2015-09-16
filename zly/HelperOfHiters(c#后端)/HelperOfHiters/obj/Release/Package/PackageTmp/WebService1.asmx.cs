@@ -53,28 +53,34 @@ namespace HelperOfHiters
         }
 
         [WebMethod]
+        public bool ModifyUserFocusPart(String UserName, String FocusPart)
+        {
+            return Users.ModifyMessage(UserName, "FocusPart", FocusPart);
+        }
+
+        /*[WebMethod]
         public String GetUserEmail(String UserName)
         {
             return Users.GetMessage(UserName, "Email");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetUserStudentNumber(String UserName)
         {
             return Users.GetMessage(UserName, "StudentNumber");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetUserMajor(String UserName)
         {
             return Users.GetMessage(UserName, "Major");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetUserAccumulatePoint(String UserName)
         {
             return Users.GetMessage(UserName, "AccumulatePoint");
-        }
+        }*/
 
         [WebMethod]
         public String GetUserFocusPart(String UserName)
@@ -82,23 +88,23 @@ namespace HelperOfHiters
             return Users.GetMessage(UserName, "FocusPart");
         }
 
-        [WebMethod]
+        /*[WebMethod]
         public bool AddUserFocusPart(String UserName, String Part)
         {
             return Users.AddFocusPart(UserName, Part);
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public bool DeleteUserFocusPart(String UserName, String Part)
         {
             return Users.DeleteFocusPart(UserName, Part);
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public bool AddUserPoint(String UserName, int Point)
         {
             return Users.AddPoint(UserName, Point);
-        }
+        }*/
 
         [WebMethod]
         public String GetUserXml(String UserName)
@@ -124,17 +130,17 @@ namespace HelperOfHiters
             return Topic.GetUserTopic(Author);
         }
 
-        [WebMethod]
+        /*[WebMethod]
         public bool ModifyTopicTitle(int TopicId, String Title)
         {
             return Topic.ModifyMessage(TopicId, "Title", Title);
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public bool ModifyTopicPart(int TopicId, String Part)
         {
             return Topic.ModifyMessage(TopicId, "Part", Part);
-        }
+        }*/
 
         [WebMethod]
         public bool ModifyTopicText(int TopicId, String Text)
@@ -148,29 +154,29 @@ namespace HelperOfHiters
             return Topic.GetMessage(TopicId, "Author");
         }
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetTopicDate(int TopicId)
         {
             return Topic.GetMessage(TopicId, "Date");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetTopicTitle(int TopicId)
         {
             return Topic.GetMessage(TopicId, "Title");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetTopicPart(int TopicId)
         {
             return Topic.GetMessage(TopicId, "Part");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetTopicText(int TopicId)
         {
             return Topic.GetMessage(TopicId, "Text");
-        }
+        }*/
 
         [WebMethod]
         public String GetTopicXml(int TopicId)
@@ -196,11 +202,11 @@ namespace HelperOfHiters
             return Answer.GetTopicAnswer(TopicId);
         }
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetUserAnswer(String Author)
         {
             return Answer.GetUserAnswer(Author);
-        }
+        }*/
 
         [WebMethod]
         public bool ModifyAnswerText(int id, String Text)
@@ -208,29 +214,29 @@ namespace HelperOfHiters
             return Answer.ModifyMessage(id, "Text", Text);
         }
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetAnswerTopic(int id)
         {
             return Answer.GetMessage(id, "TopicId");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetAnswerAuthor(int id)
         {
             return Answer.GetMessage(id, "Author");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetAnswerDate(int id)
         {
             return Answer.GetMessage(id, "Date");
-        }
+        }*/
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetAnswerText(int id)
         {
             return Answer.GetMessage(id, "Text");
-        }
+        }*/
 
         [WebMethod]
         public String GetAnswerXml(int id)
@@ -239,9 +245,21 @@ namespace HelperOfHiters
         }
 
         [WebMethod]
+        public String GetAllRecommandTopic()
+        {
+            return Topic.GetAllRecommandTopic();
+        }
+
+        [WebMethod]
         public String GetRecommandTopic(String Part)
         {
             return Topic.GetRecommandTopic(Part);
+        }
+
+        [WebMethod]
+        public String GetPartTopic(String Part)
+        {
+            return Topic.GetPartTopic(Part);
         }
 
         [WebMethod]
@@ -256,10 +274,10 @@ namespace HelperOfHiters
             return Answer.CancelRecommandAnswer(id);
         }
 
-        [WebMethod]
+        /*[WebMethod]
         public String GetRecommandAnswer()
         {
             return Answer.GetRecommandAnswer();
-        }
+        }*/
     }
 }
