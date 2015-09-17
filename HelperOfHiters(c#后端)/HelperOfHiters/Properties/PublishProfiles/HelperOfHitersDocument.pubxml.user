@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>G:\作业任务\web\HelperOfHiters</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Answer.cs">
+      <publishTime>09/08/2015 17:42:04</publishTime>
+    </File>
+    <File Include="bin/HelperOfHiters.dll">
+      <publishTime>09/16/2015 23:05:41</publishTime>
+    </File>
+    <File Include="bin/HelperOfHiters.dll.config">
+      <publishTime>09/01/2015 12:08:43</publishTime>
+    </File>
+    <File Include="HelperOfHiters.csproj">
+      <publishTime>09/01/2015 13:23:17</publishTime>
+    </File>
+    <File Include="HelperOfHiters.csproj.user">
+      <publishTime>09/01/2015 13:23:17</publishTime>
+    </File>
+    <File Include="Properties/AssemblyInfo.cs">
+      <publishTime>07/30/2015 10:31:27</publishTime>
+    </File>
+    <File Include="Properties/PublishProfiles/HelperOfHiters.pubxml">
+      <publishTime>09/01/2015 12:40:38</publishTime>
+    </File>
+    <File Include="Properties/PublishProfiles/HelperOfHiters.pubxml.user">
+      <publishTime>08/31/2015 23:44:11</publishTime>
+    </File>
+    <File Include="Properties/PublishProfiles/HelperOfHitersDocument.pubxml">
+      <publishTime>09/01/2015 13:26:05</publishTime>
+    </File>
+    <File Include="Properties/PublishProfiles/HelperOfHitersDocument.pubxml.user">
+      <publishTime>09/16/2015 15:25:58</publishTime>
+    </File>
+    <File Include="SQL.cs">
+      <publishTime>09/03/2015 15:10:14</publishTime>
+    </File>
+    <File Include="Topic.cs">
+      <publishTime>09/14/2015 14:44:04</publishTime>
+    </File>
+    <File Include="Users.cs">
+      <publishTime>09/16/2015 23:05:24</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/08/2015 17:44:29</publishTime>
+    </File>
+    <File Include="Web.Debug.config">
+      <publishTime>07/30/2015 10:31:32</publishTime>
+    </File>
+    <File Include="Web.Release.config">
+      <publishTime>07/30/2015 10:31:33</publishTime>
+    </File>
+    <File Include="WebService1.asmx">
+      <publishTime>08/03/2015 20:00:16</publishTime>
+    </File>
+    <File Include="WebService1.asmx.cs">
+      <publishTime>09/16/2015 15:25:06</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

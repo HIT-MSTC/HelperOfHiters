@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.helperofhiters"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainPageActivity" android:label="@string/app_name" android:launchMode="singleTask" />
+        <activity android:name=".UserMessageActivity" android:label="个人信息" />
+        <activity android:name=".ShowPartListActivity" android:label="分类浏览" />
+        <activity android:name=".ShowTopicListActivity" android:label="问题列表" />
+        <activity android:name=".ShowTopicAnswerActivity" android:label="问题详情" />
+        <activity android:name=".PostTopicActivity" android:label="发布帖子" />
+        
+    </application>
+
+</manifest>
